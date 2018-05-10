@@ -12,13 +12,13 @@ const Logo = () => {
       <p className={css(styles.text)}>Вело-мото мастерская г. Донецк</p>
     </div>
   )
-}
+};
 
 const styles = StyleSheet.create({
   text: {
     fontSize: '12px',
     color: '#ADADAD'
   }
-})
+});
 
 export default Logo;

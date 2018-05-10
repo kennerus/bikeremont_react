@@ -1,21 +1,31 @@
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite/no-important';
-import Logo from './Logo';
+import {StyleSheet, css} from 'aphrodite/no-important';
 import Container from '../common/Container';
+import Logo from './Logo';
+import MainMenu from './MainMenu';
+import '../common/GlobalStyles/GlobalStyles.css';
 
-const Header = () => {
-  return(
-    <header className={css(styles.header)}>
-      <Container>
-        <Logo />
-      </Container>
-    </header>
-  )
+export class Header extends React.Component {
+  render() {
+    return (
+      <header className={css(styles.header)}>
+        <Container mainClass="container" modifier="container_flex">
+          <Logo/>
+          <MainMenu/>
+        </Container>
+      </header>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#323235'
+  },
+  containerFlex: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   }
 });
 
