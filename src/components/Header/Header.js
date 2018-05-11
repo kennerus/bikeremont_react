@@ -1,12 +1,11 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
-import '../common/GlobalStyles/GlobalStyles.css';
 import Container from '../common/Container';
 import Logo from './Logo';
 import MainMenu from './MainMenu';
 import BackCall from './BackCall';
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
   render() {
     return (
       <header className={css(styles.header)}>
@@ -22,6 +21,7 @@ export class Header extends React.Component {
 
 const styles = StyleSheet.create({
   header: {
+    padding: '10px 0',
     backgroundColor: '#323235'
   },
   containerFlex: {
@@ -30,5 +30,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
-
-export default Header;
