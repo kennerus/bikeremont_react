@@ -4,7 +4,7 @@ import MenuLink from './MenuLink';
 
 const MainMenu = () => {
   return(
-    <div>
+    <div className={css(styles.menuWrapper)}>
       <div>
         <p className={css(styles.text)}>Цены на наши услуги</p>
       </div>
@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
   text: {
     margin: '0',
     color: '#ADADAD'
+  },
+  menuWrapper: {
+    textAlign: 'center'
   }
 });
 

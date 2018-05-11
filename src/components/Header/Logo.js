@@ -5,7 +5,7 @@ import logo from './img/logo.png';
 
 const Logo = () => {
   return(
-    <div className="Logo">
+    <div className={css(styles.logoWrapper)}>
       <Link to="/">
         <img src={logo} alt="Bike Remont"/>
       </Link>
@@ -15,9 +15,15 @@ const Logo = () => {
 };
 
 const styles = StyleSheet.create({
+  logoWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   text: {
+    margin: '0',
     fontSize: '12px',
-    color: '#ADADAD'
+    color: '#ADADAD',
   }
 });
 

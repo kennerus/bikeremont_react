@@ -1,17 +1,19 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
+import '../common/GlobalStyles/GlobalStyles.css';
 import Container from '../common/Container';
 import Logo from './Logo';
 import MainMenu from './MainMenu';
-import '../common/GlobalStyles/GlobalStyles.css';
+import BackCall from './BackCall';
 
 export class Header extends React.Component {
   render() {
     return (
       <header className={css(styles.header)}>
         <Container mainClass="container" modifier="container_flex">
-          <Logo/>
-          <MainMenu/>
+          <Logo />
+          <MainMenu />
+          <BackCall />
         </Container>
       </header>
     )
