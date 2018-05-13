@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Container extends React.Component {
-  render() {
+const Container = props => {
+  const { mainClass, modifier, children } = props;
+  return (
+    <div className={`${mainClass} ${modifier}`}>
+      {children}
+    </div>
+  );
+};
 
-    return(
-      <div className={`${this.props.mainClass} ${this.props.modifier}`}>
-        {this.props.children}
-      </div>
-    )
-  }
-}
+Container.propTypes = {
+  mainClass: PropTypes.string.isRequired,
+  modifier: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+};
+
+export default Container;

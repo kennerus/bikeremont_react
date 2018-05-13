@@ -7,7 +7,7 @@ const Logo = () => {
   return(
     <div className={css(styles.logoWrapper)}>
       <Link to="/">
-        <img src={logo} alt="Bike Remont"/>
+        <img className={css(styles.logoImg)} src={logo} alt="Bike Remont"/>
       </Link>
       <p className={css(styles.text)}>Вело-мото мастерская г. Донецк</p>
     </div>
@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
     margin: '0',
     fontSize: '12px',
     color: '#ADADAD',
+  },
+  logoImg: {
+    width: '90%',
   }
 });
 

@@ -5,8 +5,7 @@ import Logo from './Logo';
 import MainMenu from './MainMenu';
 import BackCall from './BackCall';
 
-export default class Header extends React.Component {
-  render() {
+const Header = () => {
     return (
       <header className={css(styles.header)}>
         <Container mainClass="container" modifier="container_flex">
@@ -16,8 +15,7 @@ export default class Header extends React.Component {
         </Container>
       </header>
     )
-  }
-}
+};
 
 const styles = StyleSheet.create({
   header: {
@@ -30,3 +28,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
+
+export default Header;

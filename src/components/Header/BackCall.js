@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     color: '#ADADAD',
     backgroundColor: 'transparent',
     border: 'none',
+    cursor: 'pointer',
   }
 });
 

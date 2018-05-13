@@ -1,16 +1,15 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 
-export default class BannerContent extends React.Component {
-  render() {
+const BannerContent = props => {
+    const { bannerTitle } = props;
     return (
       <div className={css(styles.bannerContent)}>
         <h2 className={css(styles.bannerTitle)}>
-          {this.props.bannerTitle}
+          {bannerTitle}
         </h2>
       </div>
     )
-  }
 };
 
 const styles = StyleSheet.create({
@@ -31,3 +30,5 @@ const styles = StyleSheet.create({
     color: 'white',
   }
 });
+
+export default BannerContent;

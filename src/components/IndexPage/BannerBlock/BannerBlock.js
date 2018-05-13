@@ -3,15 +3,13 @@ import {StyleSheet, css} from 'aphrodite/no-important';
 import Banner from './Banner';
 import BannerContent from './BannerContent';
 
-export default class BannerBlock extends React.Component {
-  render() {
+ const BannerBlock = () => {
     return(
       <div className={css(styles.bannerWrapper)}>
         <Banner />
         <BannerContent bannerTitle="Консультация с мастером и диагностика БЕСПЛАТНО!" />
       </div>
     )
-  }
 };
 
 const styles = StyleSheet.create({
@@ -21,3 +19,4 @@ const styles = StyleSheet.create({
     height: '50vh',
   }
 });
+export default BannerBlock;

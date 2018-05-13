@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic');
 
+@font-face {
+  font-family: 'Bebas Neue Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Bebas Neue Bold'), url('../Fonts/Bebas Neue Bold.ttf') format('truetype');
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -29,3 +36,30 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
+
+/**
+ * Styles for react fancybox.
+ *  Should connect native fancybox later.
+ */
+
+.react-fancybox {
+  width: 23%;
+  margin-right: 2%;
+}
+  .react-fancybox:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  .react-fancybox:nth-child(n + 5) {
+    margin-top: 15px;
+  }
+
+  .react-fancybox:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+
+  .react-fancybox .thumbnail img {
+    width: 100%;
+  }

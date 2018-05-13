@@ -2,15 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {StyleSheet, css} from 'aphrodite/no-important';
 
-export default class MenuLink extends React.Component {
-  render() {
-    return (
-      <Link className={css(styles.link)} to={this.props.link}>
-        {this.props.text}
-      </Link>
-    )
-  }
-}
+import PropTypes from 'prop-types';
+
+const MenuLink = props => {
+  const { text, link } = props;
+  return (
+    <Link className={css(styles.link)} to={link}>
+      {text}
+    </Link>
+  );
+};
 
 const styles = StyleSheet.create({
   link: {
@@ -23,3 +24,9 @@ const styles = StyleSheet.create({
     }
   }
 });
+
+MenuLink.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default MenuLink;
