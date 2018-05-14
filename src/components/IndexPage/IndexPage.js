@@ -4,6 +4,7 @@ import Bannerblock from './BannerBlock/BannerBlock';
 import About from "./About/About";
 import RepairedBikes from "./RepairedBikes/RepairedBikes";
 import Container from "../common/Container";
+import Clients from "./Clients/Clients";
 
 export default class IndexPage extends React.Component {
   render() {
@@ -13,11 +14,10 @@ export default class IndexPage extends React.Component {
 
         <Container mainClass="container">
           <About />
+          <RepairedBikes />
+          <Clients />
         </Container>
 
-        <Container mainClass="container">
-          <RepairedBikes/>
-        </Container>
       </div>
     )
   }

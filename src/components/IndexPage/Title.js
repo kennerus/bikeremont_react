@@ -13,6 +13,7 @@ const Title = props => {
 
 const styles = StyleSheet.create({
   title: {
+    margin: '0',
     fontSize: '27px',
     fontWeight: 'normal',
     textAlign: 'center',
