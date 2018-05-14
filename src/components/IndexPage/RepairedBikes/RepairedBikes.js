@@ -19,6 +19,7 @@ import seventh from './img/07.jpg';
 import seventhSm from './img/07-small.jpg';
 import bg from './img/bg.jpg';
 import Title from "../Title";
+import RepairedBike from "./RepairedBike";
 
 class RepairedBikes extends Component {
   render() {
@@ -27,52 +28,46 @@ class RepairedBikes extends Component {
         <Title title={'Мы уже отремонтировали'}/>
 
         <div className={css(styles.gallery)}>
-          <ReactFancyBox
-            thumbnail={firstSm}
-            image={first}
+          <RepairedBike
+            fullSizeImg={first}
+            thumbnailImg={firstSm}
           />
 
-          <ReactFancyBox
-            thumbnail={secondSm}
-            image={second}
+          <RepairedBike
+            fullSizeImg={second}
+            thumbnailImg={secondSm}
           />
 
-          <ReactFancyBox
-            thumbnail={thirdSm}
-            image={third}
+          <RepairedBike
+            fullSizeImg={third}
+            thumbnailImg={thirdSm}
           />
 
-          <ReactFancyBox
-            thumbnail={fourthSm}
-            image={fourth}
+          <RepairedBike
+            fullSizeImg={fourth}
+            thumbnailImg={fourthSm}
           />
 
-          <ReactFancyBox
-            thumbnail={fifthSm}
-            image={fifth}
+          <RepairedBike
+            fullSizeImg={fifth}
+            thumbnailImg={fifthSm}
           />
 
-          <ReactFancyBox
-            thumbnail={sixthSm}
-            image={sixth}
+          <RepairedBike
+            fullSizeImg={sixth}
+            thumbnailImg={sixthSm}
           />
 
-          <ReactFancyBox
-            thumbnail={seventhSm}
-            image={seventh}
+          <RepairedBike
+            fullSizeImg={seventh}
+            thumbnailImg={seventhSm}
           />
 
-          <a
-            href="https://vk.com/album-33973321_244270884"
-            className={css(styles.more)}
-          >
-            <img
-              src={bg}
-              alt=""
-              className={css(styles.moreImg)}
-            />
-            <span className={css(styles.moreText)}>Смотреть все работы тут</span>
-          </a>
+          <RepairedBike
+            vkLink={'https://vk.com/album-33973321_244270884'}
+            bgImg={bg}
+            text={'Смотреть все работы тут'}
+          />
         </div>
       </div>
 
@@ -89,37 +84,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginTop: '60px',
   },
-  more: {
-    position: 'relative',
-    width: '24%',
-    marginTop: '15px',
-
-    '::before': {
-      content: "''",
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    }
-  },
-  moreImg: {
-    width: '100%',
-  },
-  moreText: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '100%',
-    fontFamily: 'Bebas Neue Bold',
-    textTransform: 'uppercase',
-    fontSize: '44px',
-    color: 'white',
-    textAlign: 'center',
-  },
-
-})
+});
 
 export default RepairedBikes;

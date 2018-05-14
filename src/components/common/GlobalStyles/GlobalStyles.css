@@ -13,7 +13,7 @@ body {
 
 .container {
   position: relative;
-  width: 1170px;
+  width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
@@ -37,29 +37,3 @@ body {
   align-items: center;
 }
 
-
-/**
- * Styles for react fancybox.
- *  Should connect native fancybox later.
- */
-
-.react-fancybox {
-  width: 23%;
-  margin-right: 2%;
-}
-  .react-fancybox:nth-child(4n) {
-    margin-right: 0;
-  }
-
-  .react-fancybox:nth-child(n + 5) {
-    margin-top: 15px;
-  }
-
-  .react-fancybox:hover {
-    opacity: 0.9;
-    cursor: pointer;
-  }
-
-  .react-fancybox .thumbnail img {
-    width: 100%;
-  }
