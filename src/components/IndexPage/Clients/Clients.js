@@ -18,6 +18,28 @@ import feedback_11 from './img/feedback-11.jpg';
 import feedback_12 from './img/feedback-12.jpg';
 
 class Clients extends Component {
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+   const arrowPrev = document.querySelector('.slick-prev').style;
+   const arrowNext = document.querySelector('.slick-next').style;
+   const arrow = document.querySelectorAll('.slick-arrow');
+
+    for (let i = 0; i < arrow.length; i++) {
+      arrow[i].style.zIndex = '2';
+      arrow[i].style.width = '40px';
+      arrow[i].style.height = '40px';
+      arrow[i].style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
+      console.log(arrow[i])
+    }
+    arrowPrev.left = '8px';
+    arrowPrev.borderRadius = '0 5px 5px 0';
+    arrowNext.right = '7px';
+    arrowNext.borderRadius = '5px 0 0 5px';
+  }
+
   render() {
     const settings = {
       infinite: true,
@@ -71,6 +93,7 @@ const styles = StyleSheet.create({
   },
   clientsSlider: {
     marginTop: '60px',
+    margin: '0 -7.5px',
   },
 });
 

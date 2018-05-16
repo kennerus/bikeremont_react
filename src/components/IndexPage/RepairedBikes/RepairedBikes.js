@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ReactFancyBox from 'react-fancybox';
-import 'react-fancybox/lib/fancybox.css';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 import {StyleSheet, css} from 'aphrodite/no-important';
 
 import first from './img/01.jpg';

@@ -9,7 +9,6 @@ const RepairedBike = props => {
     return (
       <div className={css(styles.galleryBlock)}>
         <a
-          data-fancybox="gallery"
           href={fullSizeImg}
         >
           <img
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '24%',
     marginRight: '1%',
+    fontSize: '0',
     backgroundColor: '#323235',
       ':nth-child(4n)': {
         marginRight: '0',
@@ -55,8 +55,10 @@ const styles = StyleSheet.create({
       },
   },
   img: {
-    display: 'block',
     width: '100%',
+    ':hover': {
+      opacity: '0.9',
+    }
   },
   more: {
     '::before': {
@@ -71,9 +73,6 @@ const styles = StyleSheet.create({
   },
   moreImg: {
     width: '100%',
-    ':hover': {
-      opacity: '0.9',
-    }
   },
   moreText: {
     position: 'absolute',
