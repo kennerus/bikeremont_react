@@ -1,5 +1,8 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faAngleRight from '@fortawesome/fontawesome-free-solid/faAngleRight';
+import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft';
 import PropTypes from 'prop-types';
 
 const ArrowForSlick = props => {
@@ -8,31 +11,50 @@ const ArrowForSlick = props => {
 
   if (arrowDirection === 'next') {
     return (
-      <div
-        className={css(styles.next)}
-      />
+      <button className={css(styles.arrow, styles.next)}>
+        <FontAwesomeIcon
+          icon={faAngleRight}
+        />
+      </button>
     )
   }
   if (arrowDirection === 'prev') {
     return (
-      <div
-        className={css(styles.prev)}
-      />
+      <button className={css(styles.arrow, styles.prev)}>
+        <FontAwesomeIcon
+          icon={faAngleLeft}
+        />
+      </button>
     )
   }
 };
 
 const styles = StyleSheet.create({
-
+  arrow: {
+    position: 'absolute',
+    top: '50%',
+    zIndex: '2',
+    width: '40px',
+    height: '40px',
+    transform: 'translateX(-50%)',
+    fontSize: '28px',
+    color: '#282828',
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  next: {
+    right: '-13px',
+    borderRadius: '5px 0 0 5px',
+  },
+  prev: {
+    left: '28px',
+    borderRadius: '0 5px 5px 0',
+  },
 });
 
 ArrowForSlick.propTypes = {
-  next: {
-
-  },
-  prev: {
-
-  },
+  arrowDirection: PropTypes.string.isRequired,
 };
 
 export default ArrowForSlick;
