@@ -1,25 +1,10 @@
 import React, {Component} from 'react';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
 import {StyleSheet, css} from 'aphrodite/no-important';
 
-import first from './img/01.jpg';
-import firstSm from './img/01-small.jpg';
-import second from './img/02.jpg';
-import secondSm from './img/02-small.jpg';
-import third from './img/03.jpg';
-import thirdSm from './img/03-small.jpg';
-import fourth from './img/04.jpg';
-import fourthSm from './img/04-small.jpg';
-import fifth from './img/05.jpg';
-import fifthSm from './img/05-small.jpg';
-import sixth from './img/06.jpg';
-import sixthSm from './img/06-small.jpg';
-import seventh from './img/07.jpg';
-import seventhSm from './img/07-small.jpg';
 import bg from './img/bg.jpg';
 import Title from "../Title";
 import RepairedBike from "./RepairedBike";
+import {smallImages, fullSizeImages} from "../../common/Images";
 
 class RepairedBikes extends Component {
   render() {
@@ -29,38 +14,38 @@ class RepairedBikes extends Component {
 
         <div className={css(styles.gallery)}>
           <RepairedBike
-            fullSizeImg={first}
-            thumbnailImg={firstSm}
+            fullSizeImg={fullSizeImages[0]}
+            thumbnailImg={smallImages[0]}
           />
 
           <RepairedBike
-            fullSizeImg={second}
-            thumbnailImg={secondSm}
+            fullSizeImg={fullSizeImages[1]}
+            thumbnailImg={smallImages[1]}
           />
 
           <RepairedBike
-            fullSizeImg={third}
-            thumbnailImg={thirdSm}
+            fullSizeImg={fullSizeImages[2]}
+            thumbnailImg={smallImages[2]}
           />
 
           <RepairedBike
-            fullSizeImg={fourth}
-            thumbnailImg={fourthSm}
+            fullSizeImg={fullSizeImages[3]}
+            thumbnailImg={smallImages[3]}
           />
 
           <RepairedBike
-            fullSizeImg={fifth}
-            thumbnailImg={fifthSm}
+            fullSizeImg={fullSizeImages[4]}
+            thumbnailImg={smallImages[4]}
           />
 
           <RepairedBike
-            fullSizeImg={sixth}
-            thumbnailImg={sixthSm}
+            fullSizeImg={fullSizeImages[5]}
+            thumbnailImg={smallImages[5]}
           />
 
           <RepairedBike
-            fullSizeImg={seventh}
-            thumbnailImg={seventhSm}
+            fullSizeImg={fullSizeImages[6]}
+            thumbnailImg={smallImages[6]}
           />
 
           <RepairedBike

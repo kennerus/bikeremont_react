@@ -12,8 +12,7 @@ const Container = props => {
 
 Container.propTypes = {
   mainClass: PropTypes.string.isRequired,
-  modifier: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default Container;

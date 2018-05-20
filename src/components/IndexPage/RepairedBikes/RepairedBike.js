@@ -1,42 +1,89 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
-import PropTypes from 'prop-types';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
+import {fullSizeImages} from "../../common/Images";
 
-const RepairedBike = props => {
-  const { fullSizeImg, thumbnailImg, vkLink, bgImg, text } = props;
 
-  if (fullSizeImg || thumbnailImg) {
-    return (
-      <div className={css(styles.galleryBlock)}>
-        <a
-          href={fullSizeImg}
-        >
-          <img
-            src={thumbnailImg}
-            alt=""
-            className={css(styles.img)}
-          />
-        </a>
-      </div>
-    );
-  } else {
-    return (
-      <div className={css(styles.galleryBlock)}>
-        <a
-          href={vkLink}
-          className={css(styles.more)}
-        >
-          <img
-            src={bgImg}
-            alt=""
-            className={css(styles.moreImg)}
-          />
-          <span className={css(styles.moreText)}>
+class RepairedBike extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      photoIndex: 0,
+      isOpen: false,
+    }
+  }
+
+  render() {
+    const { fullSizeImg, thumbnailImg, vkLink, bgImg, text } = this.props;
+    const { isOpen, photoIndex } = this.state;
+
+    let getImageIndex = () => {
+      return fullSizeImages.indexOf(this.props.fullSizeImg);
+    };
+
+    if (fullSizeImg && thumbnailImg) {
+      return (
+        <div className={css(styles.galleryBlock)}>
+          <button
+            className={css(styles.button)}
+            type="button"
+            onClick={() => {
+              this.setState({
+                photoIndex: getImageIndex(),
+                isOpen: true
+              });
+              console.log(photoIndex)
+            }}
+          >
+            <img
+              src={thumbnailImg}
+              alt=""
+              className={css(styles.img)}
+            />
+          </button>
+
+          {isOpen &&
+            <Lightbox
+              mainSrc={fullSizeImages[photoIndex]}
+              onCloseRequest={() => this.setState({ isOpen: false })}
+              nextSrc={fullSizeImages[(photoIndex + 1) % fullSizeImages.length]}
+              prevSrc={fullSizeImages[(photoIndex + fullSizeImages.length - 1) % fullSizeImages.length]}
+              onMoveNextRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + 1) % fullSizeImages.length
+                })
+              }
+              onMovePrevRequest={() =>
+                this.setState({
+                  photoIndex: (photoIndex + fullSizeImages.length - 1) % fullSizeImages.length
+                })
+              }
+
+            />
+          }
+        </div>
+      );
+    } else {
+      return (
+        <div className={css(styles.galleryBlock)}>
+          <a
+            href={vkLink}
+            className={css(styles.more)}
+          >
+            <img
+              src={bgImg}
+              alt=""
+              className={css(styles.moreImg)}
+            />
+            <span className={css(styles.moreText)}>
             {text}
           </span>
-        </a>
-      </div>
-    )
+          </a>
+        </div>
+      )
+    }
   }
 };
 
@@ -54,11 +101,17 @@ const styles = StyleSheet.create({
         marginTop: '15px',
       },
   },
-  img: {
-    width: '100%',
+  button: {
+    padding: '0',
+    border: 'none',
+    cursor: 'pointer',
     ':hover': {
       opacity: '0.9',
     }
+  },
+  img: {
+    display: 'block',
+    width: '100%',
   },
   more: {
     '::before': {
@@ -69,6 +122,9 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      ':hover': {
+        opacity: '0.9',
+      }
     }
   },
   moreImg: {
@@ -87,10 +143,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-RepairedBike.propTypes = {
-  fullSizeImg: PropTypes.string.isRequired,
-  thumbnailImg: PropTypes.string.isRequired,
-};
 
 export default RepairedBike;

@@ -11,7 +11,10 @@ const ArrowForSlick = props => {
 
   if (arrowDirection === 'next') {
     return (
-      <button className={css(styles.arrow, styles.next)}>
+      <button
+        className={css(styles.arrow, styles.next)}
+        onClick={props.onClick}
+      >
         <FontAwesomeIcon
           icon={faAngleRight}
         />
@@ -20,7 +23,10 @@ const ArrowForSlick = props => {
   }
   if (arrowDirection === 'prev') {
     return (
-      <button className={css(styles.arrow, styles.prev)}>
+      <button
+        className={css(styles.arrow, styles.prev)}
+        onClick={props.onClick}
+      >
         <FontAwesomeIcon
           icon={faAngleLeft}
         />
