@@ -4,18 +4,18 @@ import Slider from "react-slick";
 import Title from "../Title";
 import Client from "./Client";
 import ArrowForSlick from "../../common/ArrowForSlick";
-import {clientsPhotos} from "../../common/Images";
-
+import {ClientsFeedbacks} from './ClientsFeedbacks';
 
 class Clients extends Component {
-    render() {
+
+  render() {
     const settings = {
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 3,
-      autoplay: true,
+      // autoplay: true,
       nextArrow: <ArrowForSlick arrowDirection={'next'}/>,
-      prevArrow: <ArrowForSlick arrowDirection={'prev'} />,
+      prevArrow: <ArrowForSlick arrowDirection={'prev'}/>,
       responsive: [
         {
           breakpoint: 992,
@@ -39,11 +39,14 @@ class Clients extends Component {
         <Title title={'Наши клиенты'}/>
 
         <Slider className={css(styles.clientsSlider)} {...settings}>
-          {clientsPhotos.map((clientsPhoto) => (
+          {ClientsFeedbacks.map((clientInfo) => (
             <Client
-              key={clientsPhoto}
+              key={clientInfo.name}
               className={css(styles.clientSlide)}
-              img={clientsPhoto}
+              img={clientInfo.img}
+              feedback={clientInfo.feedback}
+              author={clientInfo.name}
+              city={clientInfo.city}
             />
           ))}
         </Slider>

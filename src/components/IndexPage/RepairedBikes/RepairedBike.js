@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-import {repairedBikes} from "../../common/Images";
+import {repairedBikes} from "./Images";
 
 
 class RepairedBike extends Component {
@@ -20,8 +20,6 @@ class RepairedBike extends Component {
     const { isOpen, photoIndex } = this.state;
 
     let getImageIndex = () => {
-      // return repairedBikes.fullSizeImg.indexOf(this.props.repairedBikes.fullSizeImg);
-      console.log(repairedBikes.findIndex(el => el.fullSizeImg === fullSizeImg));
       return repairedBikes.findIndex(el => el.fullSizeImg === fullSizeImg);
     };
 
@@ -36,7 +34,6 @@ class RepairedBike extends Component {
                 photoIndex: getImageIndex(),
                 isOpen: true
               });
-              console.log(photoIndex)
             }}
           >
             <img
@@ -48,18 +45,18 @@ class RepairedBike extends Component {
 
           {isOpen &&
             <Lightbox
-              mainSrc={repairedBikes.fullSizeImg[photoIndex]}
+              mainSrc={repairedBikes[photoIndex].fullSizeImg}
               onCloseRequest={() => this.setState({ isOpen: false })}
-              nextSrc={repairedBikes.fullSizeImg[(photoIndex + 1) % repairedBikes.fullSizeImg.length]}
-              prevSrc={repairedBikes.fullSizeImg[(photoIndex + repairedBikes.fullSizeImg.length - 1) % repairedBikes.fullSizeImg.length]}
+              nextSrc={repairedBikes[(photoIndex + 1) % repairedBikes.length].fullSizeImg}
+              prevSrc={repairedBikes[(photoIndex + repairedBikes.length - 1) % repairedBikes.length].fullSizeImg}
               onMoveNextRequest={() =>
                 this.setState({
-                  photoIndex: (photoIndex + 1) % repairedBikes.fullSizeImg.length
+                  photoIndex: (photoIndex + 1) % repairedBikes.length
                 })
               }
               onMovePrevRequest={() =>
                 this.setState({
-                  photoIndex: (photoIndex + repairedBikes.fullSizeImg.length - 1) % repairedBikes.fullSizeImg.length
+                  photoIndex: (photoIndex + repairedBikes.length - 1) % repairedBikes.length
                 })
               }
 

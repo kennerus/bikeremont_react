@@ -4,7 +4,7 @@ import {StyleSheet, css} from 'aphrodite/no-important';
 import bg from './img/bg.jpg';
 import Title from "../Title";
 import RepairedBike from "./RepairedBike";
-import {repairedBikes} from "../../common/Images";
+import {repairedBikes} from "./Images";
 
 class RepairedBikes extends Component {
   render() {
