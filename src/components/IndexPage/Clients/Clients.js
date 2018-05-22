@@ -39,19 +39,13 @@ class Clients extends Component {
         <Title title={'Наши клиенты'}/>
 
         <Slider className={css(styles.clientsSlider)} {...settings}>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[0]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[1]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[2]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[3]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[4]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[5]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[6]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[7]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[8]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[9]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[10]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[11]}/>
-          <Client className={css(styles.clientSlide)} img={clientsPhotos[12]}/>
+          {clientsPhotos.map((clientsPhoto) => (
+            <Client
+              key={clientsPhoto}
+              className={css(styles.clientSlide)}
+              img={clientsPhoto}
+            />
+          ))}
         </Slider>
       </div>
     );

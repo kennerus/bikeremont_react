@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css'; // This only needs to be imported once in your app
-import {fullSizeImages} from "../../common/Images";
+import {repairedBikes} from "../../common/Images";
 
 
 class RepairedBike extends Component {
@@ -20,7 +20,9 @@ class RepairedBike extends Component {
     const { isOpen, photoIndex } = this.state;
 
     let getImageIndex = () => {
-      return fullSizeImages.indexOf(this.props.fullSizeImg);
+      // return repairedBikes.fullSizeImg.indexOf(this.props.repairedBikes.fullSizeImg);
+      console.log(repairedBikes.findIndex(el => el.fullSizeImg === fullSizeImg));
+      return repairedBikes.findIndex(el => el.fullSizeImg === fullSizeImg);
     };
 
     if (fullSizeImg && thumbnailImg) {
@@ -46,18 +48,18 @@ class RepairedBike extends Component {
 
           {isOpen &&
             <Lightbox
-              mainSrc={fullSizeImages[photoIndex]}
+              mainSrc={repairedBikes.fullSizeImg[photoIndex]}
               onCloseRequest={() => this.setState({ isOpen: false })}
-              nextSrc={fullSizeImages[(photoIndex + 1) % fullSizeImages.length]}
-              prevSrc={fullSizeImages[(photoIndex + fullSizeImages.length - 1) % fullSizeImages.length]}
+              nextSrc={repairedBikes.fullSizeImg[(photoIndex + 1) % repairedBikes.fullSizeImg.length]}
+              prevSrc={repairedBikes.fullSizeImg[(photoIndex + repairedBikes.fullSizeImg.length - 1) % repairedBikes.fullSizeImg.length]}
               onMoveNextRequest={() =>
                 this.setState({
-                  photoIndex: (photoIndex + 1) % fullSizeImages.length
+                  photoIndex: (photoIndex + 1) % repairedBikes.fullSizeImg.length
                 })
               }
               onMovePrevRequest={() =>
                 this.setState({
-                  photoIndex: (photoIndex + fullSizeImages.length - 1) % fullSizeImages.length
+                  photoIndex: (photoIndex + repairedBikes.fullSizeImg.length - 1) % repairedBikes.fullSizeImg.length
                 })
               }
 

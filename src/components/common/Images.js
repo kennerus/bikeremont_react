@@ -35,6 +35,34 @@ import feedback_11 from '../IndexPage/Clients/img/feedback-11.jpg';
 import feedback_12 from '../IndexPage/Clients/img/feedback-12.jpg';
 import feedback_13 from '../IndexPage/Clients/img/feedback-13.jpg';
 
-export const fullSizeImages = [first, second, third, fourth, fifth, sixth, seventh];
-export const smallImages = [firstSm, secondSm, thirdSm, fourthSm, fifthSm, sixthSm, seventhSm];
+export const repairedBikes = [
+  {
+    fullSizeImg: first,
+    thumbnail: firstSm
+  },
+  {
+    fullSizeImg: second,
+    thumbnail: secondSm
+  },
+  {
+    fullSizeImg: third,
+    thumbnail: thirdSm
+  },
+  {
+    fullSizeImg: fourth,
+    thumbnail: fourthSm
+  },
+  {
+    fullSizeImg: fifth,
+    thumbnail: fifthSm
+  },
+  {
+    fullSizeImg: sixth,
+    thumbnail: sixthSm
+  },
+  {
+    fullSizeImg: seventh,
+    thumbnail: seventhSm
+  }
+];
 export const clientsPhotos = [feedback_01, feedback_02, feedback_03, feedback_04, feedback_05, feedback_06, feedback_07, feedback_08, feedback_09, feedback_10, feedback_11, feedback_12, feedback_13];
