@@ -8,17 +8,46 @@ class Client extends Component {
     this.state = {
       isShown: false,
     }
+
+    this.hideArrows = this.hideArrows.bind(this);
+  }
+
+  hideArrows(isHidden) {
+    const sliderArrows = document.querySelectorAll('.slick-arrow');
+    if (isHidden === 'hidden') {
+      for (let i = 0; i < sliderArrows.length; i++) {
+        sliderArrows[i].style.visibility = 'visible';
+      }
+    } else if (isHidden === 'visible') {
+      for (let i = 0; i < sliderArrows.length; i++) {
+        sliderArrows[i].style.visibility = 'hidden';
+      }
+    }
   }
 
   render() {
     const {img, feedback, author, city} = this.props;
+    const {isShown} = this.state;
 
     return (
       <div
         className={css(styles.slide)}
+        onMouseEnter={() => {
+          this.setState({
+            isShown: true,
+          });
+          this.hideArrows('visible');
+        }}
+        onMouseLeave={() => {
+          this.setState({
+            isShown: false,
+          });
+          this.hideArrows('hidden');
+        }}
       >
         <img className={css(styles.slideImg)} src={img} alt=""/>
 
+        {isShown &&
         <figure className={css(styles.figure)}>
           <blockquote className={css(styles.blockquote)}>
             {feedback}
@@ -33,7 +62,7 @@ class Client extends Component {
               {city}
             </cite>
           </figcaption>
-        </figure>
+        </figure>}
       </div>
     )
   }

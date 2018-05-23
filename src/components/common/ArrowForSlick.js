@@ -12,7 +12,7 @@ const ArrowForSlick = props => {
   if (arrowDirection === 'next') {
     return (
       <button
-        className={css(styles.arrow, styles.next)}
+        className={css(styles.arrow, styles.next) + ' slick-arrow'}
         onClick={props.onClick}
       >
         <FontAwesomeIcon
@@ -24,7 +24,7 @@ const ArrowForSlick = props => {
   if (arrowDirection === 'prev') {
     return (
       <button
-        className={css(styles.arrow, styles.prev)}
+        className={css(styles.arrow, styles.prev) + ' slick-arrow'}
         onClick={props.onClick}
       >
         <FontAwesomeIcon
