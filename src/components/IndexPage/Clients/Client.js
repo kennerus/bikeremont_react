@@ -7,9 +7,10 @@ class Client extends Component {
 
     this.state = {
       isShown: false,
-    }
+    };
 
     this.hideArrows = this.hideArrows.bind(this);
+
   }
 
   hideArrows(isHidden) {
@@ -23,6 +24,19 @@ class Client extends Component {
         sliderArrows[i].style.visibility = 'hidden';
       }
     }
+  };
+
+  renderFeedback(feedback, isShown) {
+    const figure = this._reactInternalFiber.child.stateNode.querySelector('figure');
+    const blockquote = this._reactInternalFiber.child.stateNode.querySelector('blockquote');
+
+    if (isShown === 'hidden') {
+      blockquote.innerHTML = feedback;
+      figure.style.display = 'flex';
+    } else if (isShown === 'visible') {
+      blockquote.innerHTML = '';
+      figure.style.display = 'none';
+    }
   }
 
   render() {
@@ -32,25 +46,21 @@ class Client extends Component {
     return (
       <div
         className={css(styles.slide)}
-        onMouseEnter={() => {
-          this.setState({
-            isShown: true,
-          });
+        onMouseEnter={(e) => {
           this.hideArrows('visible');
+          this.renderFeedback = this.renderFeedback.bind(this);
+          this.renderFeedback(feedback, 'hidden');
         }}
         onMouseLeave={() => {
-          this.setState({
-            isShown: false,
-          });
           this.hideArrows('hidden');
+          this.renderFeedback(feedback, 'visible');
         }}
       >
         <img className={css(styles.slideImg)} src={img} alt=""/>
 
-        {isShown &&
         <figure className={css(styles.figure)}>
           <blockquote className={css(styles.blockquote)}>
-            {feedback}
+
           </blockquote>
 
           <figcaption className={css(styles.figcaption)}>
@@ -62,11 +72,11 @@ class Client extends Component {
               {city}
             </cite>
           </figcaption>
-        </figure>}
+        </figure>
       </div>
     )
   }
-};
+}
 
 const styles = StyleSheet.create({
   slide: {
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: '0',
     left: '0',
-    display: 'flex',
+    display: 'none',
     flexDirection: 'column',
     justifyContent: 'center',
     width: '100%',
