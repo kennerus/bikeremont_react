@@ -49,16 +49,17 @@ class Client extends Component {
 
         {isShown &&
         <figure className={css(styles.figure)}>
-          <blockquote className={css(styles.blockquote)}>
-            {feedback}
-          </blockquote>
+          <blockquote
+            className={css(styles.blockquote)}
+            dangerouslySetInnerHTML={{__html: feedback}}
+          />
 
           <figcaption className={css(styles.figcaption)}>
-            <cite>
-              {author}
+            <cite className={css(styles.cite)}>
+              {author},
             </cite>
 
-            <cite>
+            <cite className={css(styles.cite)}>
               {city}
             </cite>
           </figcaption>
@@ -103,7 +104,10 @@ const styles = StyleSheet.create({
   },
   figcaption: {
     alignSelf: 'flex-end',
-  }
+  },
+  cite: {
+    display: 'block',
+  },
 });
 
 export default Client;
