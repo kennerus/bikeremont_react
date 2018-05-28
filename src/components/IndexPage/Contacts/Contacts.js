@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faMap from '@fortawesome/fontawesome-free-solid/faMap';
+import faMap from '@fortawesome/fontawesome-free-regular/faMap';
 import faPhone from '@fortawesome/fontawesome-free-solid/faPhone';
-import faCalendarAlt from '@fortawesome/fontawesome-free-solid/faCalendarAlt';
+import faCalendarAlt from '@fortawesome/fontawesome-free-regular/faCalendarAlt';
 import { VK, Group } from 'react-vk';
 import Title from "../Title";
 import Contact from "./Contact";
@@ -30,13 +30,15 @@ const Contacts = () => {
           </Contact>
         </ul>
 
-        <VK apiId={33973321}>
-          <Group
-            elementID={'vk_groups'}
-            groupId={33973321}
-            // options={mode: 3, no_cover: "1", width: "auto"}
-          />
-        </VK>
+        <div className={css(styles.widget)}>
+          <VK apiId={33973321}>
+            <Group
+              elementID={'vk_groups'}
+              groupId={33973321}
+              // options={mode: 3, no_cover: "1", width: "auto"}
+            />
+          </VK>
+        </div>
       </div>
     </div> 
   );
@@ -50,6 +52,15 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '60px',
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '49%',
+  },
+  widget: {
+    width: '49%',
   },
   icon: {
     marginRight: '10px',
