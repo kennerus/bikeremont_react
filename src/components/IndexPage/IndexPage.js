@@ -5,6 +5,8 @@ import About from "./About/About";
 import RepairedBikes from "./RepairedBikes/RepairedBikes";
 import Container from "../common/Container";
 import Clients from "./Clients/Clients";
+import Contacts from "./Contacts/Contacts";
+import AddressOnMap from './AddressOnMap/AddressOnMap';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -16,6 +18,8 @@ export default class IndexPage extends React.Component {
           <About />
           <RepairedBikes />
           <Clients />
+          <Contacts />
+          <AddressOnMap />
         </Container>
 
       </div>

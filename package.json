@@ -6,6 +6,7 @@
     "@fancyapps/fancybox": "^3.3.5",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "0.0.19",
     "aphrodite": "^2.2.0",
@@ -20,6 +21,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "react-slick": "^0.23.1",
+    "react-vk": "^1.1.12",
+    "react-yandex-maps": "^2.2.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^3.2.6"
   },
