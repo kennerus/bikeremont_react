@@ -36,3 +36,10 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
+.container_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
