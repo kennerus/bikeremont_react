@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
-import Container from '../common/Container';
+import Container from '../Container';
 import Logo from './Logo';
 import MainMenu from './MainMenu';
 import BackCall from './BackCall';
