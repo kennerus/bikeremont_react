@@ -7,7 +7,7 @@ class Client extends Component {
 
     this.state = {
       isShown: false,
-    }
+    };
 
     this.hideArrows = this.hideArrows.bind(this);
   }
