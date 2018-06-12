@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     width: '49%',
+    padding: '0',
   },
   widget: {
     width: '49%',

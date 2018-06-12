@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet, css} from 'aphrodite/no-important';
 import Bannerblock from './BannerBlock/BannerBlock';
 import About from "./About/About";
 import RepairedBikes from "./RepairedBikes/RepairedBikes";

@@ -1,8 +1,6 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faTimesCircle from '@fortawesome/fontawesome-free-solid/faTimesCircle'
 
 export default class BackCallModal extends React.Component{
   constructor(props) {
@@ -10,9 +8,13 @@ export default class BackCallModal extends React.Component{
 
     this.state = {
       isActive: false,
+      phone: '',
     }
   }
 
+  _onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  };
 
   render() {
     const {isActive} = this.state;
@@ -32,7 +34,14 @@ export default class BackCallModal extends React.Component{
 
         {isActive &&
         <div className={css(styles.modal)}>
-          <div className={css(styles.overlay)}></div>
+          <div
+            className={css(styles.overlay)}
+            onClick={() => {
+              this.setState({
+                isActive: false,
+              })
+            }}
+          />
           <div className={css(styles.modalContent)}>
             <button
               className={css(styles.modalClose)}
@@ -46,9 +55,22 @@ export default class BackCallModal extends React.Component{
             <div>
               <h2 className={css(styles.formTitle)}>Оставьте ваши контакты и мы перезвоним вам в течении часа</h2>
               <form className={css(styles.form)}>
-                <input className={css(styles.input)} type="text" name="name" placeholder="Ваше имя*"/>
-                <input className={css(styles.input)} type="text" name="phone" placeholder="Ваш телефон"/>
-                <button className={css(styles.input, styles.btn)} type="button">Отправить</button>
+                <input
+                  className={css(styles.input)}
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя*"
+                />
+                <MaskedInput
+                  className={css(styles.input)}
+                  mask="+380-111-11-11"
+                  name="phone"
+                  onChange={this._onChange}
+                />
+                <button
+                  className={css(styles.input, styles.btn)}
+                  type="button"
+                >Отправить</button>
               </form>
             </div>
           </div>
@@ -96,7 +118,6 @@ const styles = StyleSheet.create({
   },
   modalClose: {
     position: 'absolute',
-    padding: '0',
     top: '0',
     right: '0',
     width: '25px',
