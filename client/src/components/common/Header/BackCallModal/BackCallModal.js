@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
+import axios from 'axios';
 
 export default class BackCallModal extends React.Component{
   constructor(props) {
@@ -8,13 +9,26 @@ export default class BackCallModal extends React.Component{
 
     this.state = {
       isActive: false,
+      name: '',
       phone: '',
-    }
+    };
+
+    this._onChange = this._onChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   _onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value });
   };
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    const {name, phone} = this.state;
+    const form = await axios.post('/api/form', {
+      name,
+      phone
+    })
+  }
 
   render() {
     const {isActive} = this.state;
@@ -54,12 +68,16 @@ export default class BackCallModal extends React.Component{
 
             <div>
               <h2 className={css(styles.formTitle)}>Оставьте ваши контакты и мы перезвоним вам в течении часа</h2>
-              <form className={css(styles.form)}>
+              <form
+                className={css(styles.form)}
+                onSubmit={this.handleSubmit}
+              >
                 <input
                   className={css(styles.input)}
                   type="text"
                   name="name"
                   placeholder="Ваше имя*"
+                  onChange={this._onChange}
                 />
                 <MaskedInput
                   className={css(styles.input)}
@@ -69,7 +87,7 @@ export default class BackCallModal extends React.Component{
                 />
                 <button
                   className={css(styles.input, styles.btn)}
-                  type="button"
+                  type="submit"
                 >Отправить</button>
               </form>
             </div>
