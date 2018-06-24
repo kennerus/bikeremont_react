@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
-import axios from 'axios';
 
 export default class BackCallModal extends React.Component{
   constructor(props) {
@@ -21,13 +20,20 @@ export default class BackCallModal extends React.Component{
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault();
     const {name, phone} = this.state;
-    const form = await axios.post('/api/form', {
-      name,
-      phone
+
+    let formData = new FormData();
+    formData.append('name', name);
+    formData.append('phone', phone);
+
+    fetch('/mail2.php', {
+      method: 'POST',
+      body: formData
     })
+      .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
+      .catch(response => console.log(response))
   }
 
   render() {
