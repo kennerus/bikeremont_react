@@ -10,7 +10,7 @@ import AddressOnMap from './AddressOnMap/AddressOnMap';
 export default class IndexPage extends React.Component {
   render() {
     return(
-      <div>
+      <main className="main">
         <Bannerblock />
 
         <Container mainClass="container">
@@ -20,8 +20,7 @@ export default class IndexPage extends React.Component {
           <Contacts />
           <AddressOnMap />
         </Container>
-
-      </div>
+      </main>
     )
   }
 }

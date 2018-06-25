@@ -11,7 +11,7 @@ const MainMenu = () => {
       <nav>
         <MenuLink text="Велосипеды" link="/bikes" />
         <MenuLink text="Мотоциклы" link="/moto" />
-        <MenuLink text="Скутеры/Мопеды" link="/scooters" />
+        <MenuLink text="Скутеры/Мопеды" link="/scooter" />
       </nav>
     </div>
   )
