@@ -6,7 +6,7 @@ const mapState = { center: [47.981258, 37.85223], zoom: 16 };
 
 const AddressOnMap = () => {
   return (
-    <div className={css(styles.map)}>
+    <section className={css(styles.map)}>
       <YMaps>
         <Map
           state={mapState}
@@ -30,7 +30,7 @@ const AddressOnMap = () => {
 
         </Map>
       </YMaps>
-    </div>
+    </section>
   );
 };
 

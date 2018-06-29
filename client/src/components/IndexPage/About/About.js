@@ -10,7 +10,7 @@ import skewdriver from './img/scewdriver.png';
 class About extends Component {
   render() {
     return (
-      <div className={css(styles.wrapper)}>
+      <section className={css(styles.wrapper)}>
         <AboutBlock
           imgSrc={truck}
           title="Доставка"
@@ -31,7 +31,7 @@ class About extends Component {
           title="Зап. части в наличии"
           text="Если нужна замена детали, то мы всегда быстро подберём подходящую зап.часть. Вам не нужно ждать неделями. "
         />
-      </div>
+      </section>
     );
   }
 }

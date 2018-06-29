@@ -35,7 +35,7 @@ class Clients extends Component {
     };
 
     return (
-      <div className={css(styles.clients)}>
+      <section className={css(styles.clients)}>
         <Title title={'Наши клиенты'}/>
 
         <Slider className={css(styles.clientsSlider)} {...settings}>
@@ -50,7 +50,7 @@ class Clients extends Component {
             />
           ))}
         </Slider>
-      </div>
+      </section>
     );
   }
 }

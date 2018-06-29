@@ -9,7 +9,7 @@ import {repairedBikes} from "./Images";
 class RepairedBikes extends Component {
   render() {
     return (
-      <div className={css(styles.wrapper)}>
+      <section className={css(styles.wrapper)}>
         <Title title={'Мы уже отремонтировали'}/>
 
         <div className={css(styles.gallery)}>
@@ -27,7 +27,7 @@ class RepairedBikes extends Component {
             text={'Смотреть все работы тут'}
           />
         </div>
-      </div>
+      </section>
 
     );
   }

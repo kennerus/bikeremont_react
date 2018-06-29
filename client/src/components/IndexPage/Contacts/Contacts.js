@@ -12,7 +12,7 @@ import Contact from "./Contact";
 
 const Contacts = () => {
   return (
-    <div className={css(styles.wrapper)}>
+    <section className={css(styles.wrapper)}>
       <Title title={'Наши контакты'}/>
       
       <div className={css(styles.contacts)}>
@@ -40,7 +40,7 @@ const Contacts = () => {
           </VK>
         </div>
       </div>
-    </div> 
+    </section>
   );
 };
 

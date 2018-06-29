@@ -5,10 +5,10 @@ import BannerContent from './BannerContent';
 
  const BannerBlock = () => {
     return(
-      <div className={css(styles.bannerWrapper)}>
+      <section className={css(styles.bannerWrapper)}>
         <Banner />
         <BannerContent bannerTitle="Консультация с мастером и диагностика БЕСПЛАТНО!" />
-      </div>
+      </section>
     )
 };
 

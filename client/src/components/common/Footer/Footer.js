@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className={css(styles.footer)}>
       <Container mainClass="container" modifier="container_column">
         <p className={css(styles.text)}>Донецк - 2017</p>
-        <Link className={css(styles.text, styles.link)} to={'/'}>Политика конфиденциальности</Link>
+        <Link className={css(styles.text, styles.link)} to={'privacy'}>Политика конфиденциальности</Link>
       </Container>
     </footer>
   );

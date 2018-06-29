@@ -8,7 +8,27 @@
 }
 
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #232323;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-weight: normal;
+  text-align: center;
+}
+
+h3 {
+  font-size: 20px;
+  text-align: center;
 }
 
 .App {
@@ -25,9 +45,13 @@ body {
   margin-top: 35px;
 }
 
+.main_not-found {
+  display: flex;
+}
+
 .container {
   position: relative;
-  width: 1200px;
+  width: 1170px;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
@@ -56,4 +80,35 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container_padding {
+  padding: 30px 15px;
+}
+
+.backCall-btn_header {
+  padding: 2px 5px;
+  font-size: 14px;
+  color: #ADADAD;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.backCall-btn {
+  padding: 15px 20px;
+  font-size: 17px;
+  color: #fafafa;
+  background-color: #323235;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.backCall-btn_header:hover {
+  color: #bdbdbd;
+}
+
+.backCall-btn:hover {
+  background-color: #757575;
 }

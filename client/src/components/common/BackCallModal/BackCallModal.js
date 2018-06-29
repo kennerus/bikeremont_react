@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
 
-export default class BackCallModal extends React.Component{
+export default class BackCallModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,10 +16,12 @@ export default class BackCallModal extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // get inputs value
   _onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({[e.target.name]: e.target.value});
   };
 
+  // send data
   handleSubmit(e) {
     e.preventDefault();
     const {name, phone} = this.state;
@@ -32,25 +34,27 @@ export default class BackCallModal extends React.Component{
       method: 'POST',
       body: formData
     })
-      .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
-      .catch(response => console.log(response))
+    .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
+    .catch(response => console.log(response))
   }
 
   render() {
     const {isActive} = this.state;
+    const {buttonText, buttonStyle} = this.props;
 
-    return(
+    return (
       <div>
-        <div>
-          <button
-            className={css(styles.callOrderBtn)}
-            onClick={() => {
-              this.setState({
-                isActive: true,
-              })
-            }}
-          >Заказать звонок</button>
-        </div>
+        <button
+          type="button"
+          className={buttonStyle}
+          onClick={() => {
+            this.setState({
+              isActive: true,
+            })
+          }}
+        >
+          {buttonText}
+        </button>
 
         {isActive &&
         <div className={css(styles.modal)}>
@@ -94,7 +98,8 @@ export default class BackCallModal extends React.Component{
                 <button
                   className={css(styles.input, styles.btn)}
                   type="submit"
-                >Отправить</button>
+                >Отправить
+                </button>
               </form>
             </div>
           </div>
@@ -105,14 +110,6 @@ export default class BackCallModal extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  callOrderBtn: {
-    padding: '2px 5px',
-    fontSize: '14px',
-    color: '#ADADAD',
-    backgroundColor: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-  },
   modal: {
     position: 'fixed',
     top: '0',

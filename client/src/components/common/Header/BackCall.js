@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faPhone from '@fortawesome/fontawesome-free-solid/faPhone';
-import BackCallModal from './BackCallModal/BackCallModal';
+import BackCallModal from '../BackCallModal/BackCallModal';
 
 const BackCall = () => {
   return(
@@ -12,7 +12,10 @@ const BackCall = () => {
         <p className={css(styles.phoneNumber)}>+38 (071) 437 93 15 </p>
       </div>
 
-      <BackCallModal />
+      <BackCallModal
+        buttonStyle="backCall-btn_header"
+        buttonText="Заказать звонок"
+      />
     </div>
   )
 };

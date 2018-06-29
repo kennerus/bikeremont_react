@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     color: '#ADADAD',
   },
   logoImg: {
-    width: '90%',
+    width: '100%',
   }
 });
 

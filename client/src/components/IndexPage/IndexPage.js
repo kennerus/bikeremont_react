@@ -18,8 +18,9 @@ export default class IndexPage extends React.Component {
           <RepairedBikes />
           <Clients />
           <Contacts />
-          <AddressOnMap />
         </Container>
+
+        <AddressOnMap />
       </main>
     )
   }
