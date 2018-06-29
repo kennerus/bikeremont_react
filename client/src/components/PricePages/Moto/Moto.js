@@ -1,6 +1,6 @@
 import React from 'react';
 import PricePageHead from '../PricePageHead/PricePageHead';
-import moto from '../img/moto-title.jpg';
+import moto from './img/moto-title.jpg';
 
 const Moto = () => {
   return (

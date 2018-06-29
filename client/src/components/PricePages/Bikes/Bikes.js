@@ -3,7 +3,7 @@ import {StyleSheet, css} from 'aphrodite/no-important';
 import PricePageHead from '../PricePageHead/PricePageHead';
 import PricePageBody from '../PricePageBody/PricePageBody';
 import PricePageBot from '../PricePageFooter/PricePageBot';
-import bike from '../img/bike-title.jpg';
+import bike from './img/bike-title.jpg';
 
 import {another} from './bikePrices/another';
 import {brakes} from './bikePrices/brakes';
