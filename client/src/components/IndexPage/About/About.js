@@ -41,7 +41,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '80px',
-  }
+    '@media (max-width: 992px)': {
+      flexWrap: 'wrap',
+    },
+  },
 });
 
 export default About;

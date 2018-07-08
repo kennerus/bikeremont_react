@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: '300px',
+    maxHeight: '300px',
     marginTop: '35px',
   }
 });

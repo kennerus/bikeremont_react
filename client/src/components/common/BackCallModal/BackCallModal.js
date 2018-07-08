@@ -7,7 +7,7 @@ export default class BackCallModal extends React.Component {
     super(props);
 
     this.state = {
-      isActive: false,
+      isModalActive: false,
       name: '',
       phone: '',
     };
@@ -39,7 +39,7 @@ export default class BackCallModal extends React.Component {
   }
 
   render() {
-    const {isActive} = this.state;
+    const {isModalActive} = this.state;
     const {buttonText, buttonStyle} = this.props;
 
     return (
@@ -49,20 +49,20 @@ export default class BackCallModal extends React.Component {
           className={buttonStyle}
           onClick={() => {
             this.setState({
-              isActive: true,
+              isModalActive: true,
             })
           }}
         >
           {buttonText}
         </button>
 
-        {isActive &&
+        {isModalActive &&
         <div className={css(styles.modal)}>
           <div
             className={css(styles.overlay)}
             onClick={() => {
               this.setState({
-                isActive: false,
+                isModalActive: false,
               })
             }}
           />
@@ -71,7 +71,7 @@ export default class BackCallModal extends React.Component {
               className={css(styles.modalClose)}
               onClick={() => {
                 this.setState({
-                  isActive: false,
+                  isModalActive: false,
                 })
               }}
             >&#10005;</button>

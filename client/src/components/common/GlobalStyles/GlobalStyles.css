@@ -58,13 +58,13 @@ h3 {
 }
 
 @media (max-width: 1200px) {
-  container {
+  .container {
     width: 100%
   }
 }
 
 @media (max-width: 768px) {
-  container {
+  .container {
     padding: 0 10px
   }
 }
@@ -84,6 +84,12 @@ h3 {
 
 .container_padding {
   padding: 30px 15px;
+}
+
+@media (max-width: 576px) {
+  .container_flex {
+    flex-wrap: wrap;
+  }
 }
 
 .backCall-btn_header {

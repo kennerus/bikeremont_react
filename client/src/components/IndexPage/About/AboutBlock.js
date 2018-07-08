@@ -28,13 +28,32 @@ class AboutBlock extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     width: '23%',
-    height: '250px',
     marginRight: '10px',
     padding: '20px',
     backgroundColor: '#eceff1',
     boxSizing: 'border-box',
     ':hover': {
       boxShadow: '0 15px 33px 0 rgba(153,130,161,.18)'
+    },
+    ':last-child':{
+      marginRight: '0',
+    },
+    '@media (max-width: 992px)': {
+      width: '48%',
+      marginTop: '20px',
+      ':nth-child(2)': {
+        marginRight: '0',
+      },
+      'nth-child(-n + 2)': {
+        marginTop: '0'
+      }
+    },
+    '@media (max-width: 576px)': {
+      width: '100%',
+      marginRight: '0',
+      ':nth-child(-n + 1)': {
+        marginTop: '0',
+      }
     }
   },
   head: {

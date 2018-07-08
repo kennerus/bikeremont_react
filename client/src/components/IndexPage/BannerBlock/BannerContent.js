@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     transform: 'translate(-50%, -50%)',
     color: 'white',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    '@media (max-width: 992px)': {
+      width: '80%',
+      padding: '15px',
+    }
   },
   bannerTitle: {
     margin: '0',

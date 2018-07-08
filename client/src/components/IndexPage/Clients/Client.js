@@ -6,7 +6,7 @@ class Client extends Component {
     super(props);
 
     this.state = {
-      isShown: false,
+      isFeedbackShown: false,
     };
 
     this.hideArrows = this.hideArrows.bind(this);
@@ -27,27 +27,27 @@ class Client extends Component {
 
   render() {
     const {img, feedback, author, city} = this.props;
-    const {isShown} = this.state;
+    const {isFeedbackShown} = this.state;
 
     return (
       <div
         className={css(styles.slide)}
         onMouseEnter={() => {
           this.setState({
-            isShown: true,
+            isFeedbackShown: true,
           });
           this.hideArrows('visible');
         }}
         onMouseLeave={() => {
           this.setState({
-            isShown: false,
+            isFeedbackShown: false,
           });
           this.hideArrows('hidden');
         }}
       >
         <img className={css(styles.slideImg)} src={img} alt=""/>
 
-        {isShown &&
+        {isFeedbackShown &&
         <figure className={css(styles.figure)}>
           <blockquote
             className={css(styles.blockquote)}

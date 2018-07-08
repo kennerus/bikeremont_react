@@ -11,13 +11,13 @@ class RepairedBike extends Component {
 
     this.state = {
       photoIndex: 0,
-      isOpen: false,
+      isGalleryOpen: false,
     }
   }
 
   render() {
     const { fullSizeImg, thumbnailImg, vkLink, bgImg, text } = this.props;
-    const { isOpen, photoIndex } = this.state;
+    const { isGalleryOpen, photoIndex } = this.state;
 
     let getImageIndex = () => {
       return repairedBikes.findIndex(el => el.fullSizeImg === fullSizeImg);
@@ -32,7 +32,7 @@ class RepairedBike extends Component {
             onClick={() => {
               this.setState({
                 photoIndex: getImageIndex(),
-                isOpen: true
+                isGalleryOpen: true
               });
             }}
           >
@@ -43,10 +43,10 @@ class RepairedBike extends Component {
             />
           </button>
 
-          {isOpen &&
+          {isGalleryOpen &&
             <Lightbox
               mainSrc={repairedBikes[photoIndex].fullSizeImg}
-              onCloseRequest={() => this.setState({ isOpen: false })}
+              onCloseRequest={() => this.setState({ isGalleryOpen: false })}
               nextSrc={repairedBikes[(photoIndex + 1) % repairedBikes.length].fullSizeImg}
               prevSrc={repairedBikes[(photoIndex + repairedBikes.length - 1) % repairedBikes.length].fullSizeImg}
               onMoveNextRequest={() =>

@@ -35,7 +35,6 @@ const Contacts = () => {
             <Group
               elementID={'vk_groups'}
               groupId={33973321}
-              // options={mode: 3, no_cover: "1", width: "auto"}
             />
           </VK>
         </div>
