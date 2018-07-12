@@ -136,6 +136,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: '5px',
     boxSizing: 'border-box',
+    '@media (max-width: 400px)': {
+      width: '90vw'
+    }
   },
   modalClose: {
     position: 'absolute',

@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
     '@media (max-width: 992px)': {
       flexWrap: 'wrap',
     },
+    '@media (max-width: 768px)': {
+      marginTop: '20px'
+    }
   },
 });
 

@@ -36,11 +36,17 @@ class RepairedBikes extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     marginTop: '90px',
+    '@media (max-width: 768px)': {
+      marginTop: '30px'
+    },
   },
   gallery: {
     display: 'flex',
     flexWrap: 'wrap',
     marginTop: '60px',
+    '@media (max-width: 768px)': {
+      marginTop: '30px'
+    },
   },
 });
 

@@ -93,12 +93,28 @@ const styles = StyleSheet.create({
     marginRight: '1%',
     fontSize: '0',
     backgroundColor: '#323235',
-      ':nth-child(4n)': {
-        marginRight: '0',
-      },
-      ':nth-child(n + 5)': {
+    ':nth-child(4n)': {
+      marginRight: '0',
+    },
+    ':nth-child(n + 5)': {
+      marginTop: '15px',
+    },
+    '@media (max-width: 992px)': {
+      width: '49%',
+      ':nth-child(n + 3)': {
         marginTop: '15px',
       },
+      ':nth-child(2n)': {
+        marginRight: '0',
+      }
+    },
+    '@media (max-width: 576px)': {
+      width: '100%',
+      marginRight: '0',
+      ':nth-child(n + 2)': {
+        marginTop: '15px',
+      }
+    }
   },
   button: {
     padding: '0',

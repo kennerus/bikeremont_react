@@ -14,7 +14,7 @@ const Contacts = () => {
   return (
     <section className={css(styles.wrapper)}>
       <Title title={'Наши контакты'}/>
-      
+
       <div className={css(styles.contacts)}>
         <ul className={css(styles.list)}>
           <Contact text="Работаем ежедневно с 9:00 до 17:00. Выходной понедельник.">
@@ -46,11 +46,17 @@ const Contacts = () => {
 const styles = StyleSheet.create({
   wrapper: {
     marginTop: '90px',
+    '@media (max-width: 768px)': {
+      marginTop: '30px'
+    },
   },
   contacts: {
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: '60px',
+    '@media (max-width: 768px)': {
+      flexWrap: 'wrap',
+    }
   },
   list: {
     display: 'flex',
@@ -58,9 +64,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '49%',
     padding: '0',
+    '@media (max-width: 768px)': {
+      width: '100%',
+    }
   },
   widget: {
     width: '49%',
+    '@media (max-width: 768px)': {
+      width: '100%',
+    }
   },
   icon: {
     marginRight: '10px',

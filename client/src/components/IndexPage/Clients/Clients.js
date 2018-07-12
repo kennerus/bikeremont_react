@@ -13,7 +13,7 @@ class Clients extends Component {
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 3,
-      // autoplay: true,
+      autoplay: true,
       nextArrow: <ArrowForSlick arrowDirection={'next'}/>,
       prevArrow: <ArrowForSlick arrowDirection={'prev'}/>,
       responsive: [
@@ -35,7 +35,7 @@ class Clients extends Component {
     };
 
     return (
-      <section className={css(styles.clients)}>
+      <section className={css(styles.wrapper)}>
         <Title title={'Наши клиенты'}/>
 
         <Slider className={css(styles.clientsSlider)} {...settings}>
@@ -56,12 +56,18 @@ class Clients extends Component {
 }
 
 const styles = StyleSheet.create({
-  clients: {
+  wrapper: {
     marginTop: '90px',
+    '@media (max-width: 768px)': {
+      marginTop: '30px'
+    },
   },
   clientsSlider: {
     margin: '0 -7.5px',
     marginTop: '60px',
+    '@media (max-width: 768px)': {
+      marginTop: '30px'
+    },
   },
 });
 

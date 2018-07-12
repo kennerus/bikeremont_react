@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     fontSize: '29px',
   },
   pageBot: {
+    position: 'relative',
+    zIndex: '2',
     marginTop: '30px',
     marginBottom: '70px',
     textAlign: 'center',

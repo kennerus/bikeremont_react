@@ -7,12 +7,14 @@ export default class MainMenu extends React.Component {
     super(props);
 
     this.state = {
-
+      isMobMenuOpen: false
     }
   }
 
   render() {
-    return(
+    const {isMobMenuOpen} = this.state;
+
+    return (
       <div className={css(styles.menuWrapper)}>
         <div className={css(styles.menuTitle)}>
           <p className={css(styles.text)}>Цены на наши услуги</p>
@@ -21,16 +23,39 @@ export default class MainMenu extends React.Component {
         <button
           type="button"
           className={css(styles.toggleButton)}
+          onClick={() => {
+            this.setState({
+              isMobMenuOpen: true
+            })
+          }}
         >
-          <span className={css(styles.toggleButtonLines)}></span>
-          <span className={css(styles.toggleButtonLines)}></span>
-          <span className={css(styles.toggleButtonLines)}></span>
+          <span className={css(styles.toggleButtonLines)}/>
+          <span className={css(styles.toggleButtonLines)}/>
+          <span className={css(styles.toggleButtonLines)}/>
         </button>
 
+        {isMobMenuOpen &&
+        <nav className={css(styles.mobileMenu, styles.mobileMenu_active)}>
+          <div
+            className={css(styles.mobileMenu__overlay)}
+            onClick={() => {
+              this.setState({
+                isMobMenuOpen: false
+              })
+            }}
+          />
+
+          <div className={css(styles.mobileMenu__body)}>
+            <MenuLink text="Велосипеды" link="/bikes"/>
+            <MenuLink text="Мотоциклы" link="/moto"/>
+            <MenuLink text="Скутеры/Мопеды" link="/scooter"/>
+          </div>
+        </nav>}
+
         <nav className={css(styles.menu)}>
-          <MenuLink text="Велосипеды" link="/bikes" />
-          <MenuLink text="Мотоциклы" link="/moto" />
-          <MenuLink text="Скутеры/Мопеды" link="/scooter" />
+          <MenuLink text="Велосипеды" link="/bikes"/>
+          <MenuLink text="Мотоциклы" link="/moto"/>
+          <MenuLink text="Скутеры/Мопеды" link="/scooter"/>
         </nav>
       </div>
     )
@@ -53,12 +78,16 @@ const styles = StyleSheet.create({
   toggleButton: {
     position: 'relative',
     zIndex: '1',
+    display: 'none',
     width: '35px',
     height: '30px',
     padding: '0',
     backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
+    '@media (max-width: 1200px)': {
+      display: 'initial',
+    },
   },
   toggleButtonLines: {
     position: 'absolute',
@@ -85,4 +114,43 @@ const styles = StyleSheet.create({
       display: 'none',
     },
   },
+  mobileMenu: {
+    '@media (max-width: 1200px)': {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      zIndex: '3',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100%',
+      height: '100vh',
+      transform: 'translateX(-100%)',
+      transition: 'transform 0.2s ease-out',
+    }
+  },
+  mobileMenu_active: {
+    transform: 'translateX(0)'
+  },
+  mobileMenu__overlay: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    zIndex: '1',
+    width: '100%',
+    heigth: '100%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  mobileMenu__body: {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    zIndex: '2',
+    width: '70%',
+    maxWidth: '400px',
+    heigth: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: '#323235',
+  }
 });
