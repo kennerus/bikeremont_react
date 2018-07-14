@@ -42,7 +42,6 @@ class Clients extends Component {
           {ClientsFeedbacks.map((clientInfo) => (
             <Client
               key={clientInfo.name}
-              className={css(styles.clientSlide)}
               img={clientInfo.img}
               feedback={clientInfo.feedback}
               author={clientInfo.name}

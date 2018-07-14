@@ -7,7 +7,11 @@ import PropTypes from 'prop-types';
 const MenuLink = props => {
   const { text, link } = props;
   return (
-    <Link className={css(styles.link)} to={link}>
+    <Link
+      className={css(styles.link)}
+      to={link}
+      onClick={props.click}
+    >
       {text}
     </Link>
   );
@@ -27,6 +31,7 @@ const styles = StyleSheet.create({
 
 MenuLink.propTypes = {
   text: PropTypes.string.isRequired,
+  to: PropTypes.string
 };
 
 export default MenuLink;

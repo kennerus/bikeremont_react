@@ -1,0 +1,30 @@
+.MobileMenu__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.MobileMenu__body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 70%;
+  max-width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #323235;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+}
+
+.MobileMenu_active {
+  box-shadow: 1px 0 7px rgba(0,0,0, 0.5);
+  transform: translateX(0);
+}
