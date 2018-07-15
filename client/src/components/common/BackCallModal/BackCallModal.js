@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
+import FormErrors from "../FormErrors";
 
 export default class BackCallModal extends React.Component {
   constructor(props) {
@@ -10,6 +11,10 @@ export default class BackCallModal extends React.Component {
       isModalActive: false,
       name: '',
       phone: '',
+      formErrors: {name: '', phone: ''},
+      isNameValid: false,
+      isPhoneValid: false,
+      isFormValid: false
     };
 
     this._onChange = this._onChange.bind(this);
@@ -18,24 +23,51 @@ export default class BackCallModal extends React.Component {
 
   // get inputs value
   _onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value});
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value},
+      () => { this.validateField(name, value)});
   };
+
+  validateField(fieldName, value) {
+    const {isNameValid, isPhoneValid, isFormValid} = this.state;
+
+    if (fieldName === 'name' && value.length >= 2) {
+      this.setState({isNameValid: true})
+    } else if (fieldName === 'name') {
+      this.setState({isNameValid: false})
+    }
+
+    if (fieldName === 'phone' && value.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
+      this.setState({isPhoneValid: true});
+    } else if (fieldName === 'phone') {
+      this.setState({isPhoneValid: false});
+    }
+
+    if (isNameValid && isPhoneValid) {
+      this.setState({isFormValid: true})
+    }
+  }
 
   // send data
   handleSubmit(e) {
     e.preventDefault();
-    const {name, phone} = this.state;
+    const {name, phone, isFormValid} = this.state;
 
-    let formData = new FormData();
-    formData.append('name', name);
-    formData.append('phone', phone);
+    if (isFormValid) {
+      let formData = new FormData();
+      formData.append('name', name);
+      formData.append('phone', phone);
 
-    fetch('/mail2.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
-    .catch(response => console.log(response))
+      fetch('/mail2.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
+        .catch(response => console.log(response))
+    } else {
+      console.log(321);
+    }
   }
 
   render() {
@@ -78,6 +110,7 @@ export default class BackCallModal extends React.Component {
 
             <div>
               <h2 className={css(styles.formTitle)}>Оставьте ваши контакты и мы перезвоним вам в течении часа</h2>
+              <FormErrors formErrors={this.state.formErrors} />
               <form
                 className={css(styles.form)}
                 onSubmit={this.handleSubmit}
@@ -86,18 +119,22 @@ export default class BackCallModal extends React.Component {
                   className={css(styles.input)}
                   type="text"
                   name="name"
+                  value={this.state.name}
                   placeholder="Ваше имя*"
                   onChange={this._onChange}
                 />
                 <MaskedInput
                   className={css(styles.input)}
-                  mask="+380-111-11-11"
+                  mask="+38(011)111-11-11"
                   name="phone"
+                  value={this.state.phone}
                   onChange={this._onChange}
                 />
+
                 <button
                   className={css(styles.input, styles.btn)}
                   type="submit"
+                  // disabled={!this.state.formValid}
                 >Отправить
                 </button>
               </form>
