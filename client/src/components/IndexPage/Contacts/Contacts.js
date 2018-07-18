@@ -13,7 +13,7 @@ import Contact from "./Contact";
 const Contacts = () => {
   return (
     <section className={css(styles.wrapper)}>
-      <Title title={'Наши контакты'}/>
+      <Title title={'Контакты'}/>
 
       <div className={css(styles.contacts)}>
         <ul className={css(styles.list)}>

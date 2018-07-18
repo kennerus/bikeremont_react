@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, css} from 'aphrodite/no-important';
 import MaskedInput from 'react-maskedinput';
-import FormErrors from "../FormErrors";
 
 export default class BackCallModal extends React.Component {
   constructor(props) {
@@ -11,7 +10,6 @@ export default class BackCallModal extends React.Component {
       isModalActive: false,
       name: '',
       phone: '',
-      formErrors: {name: '', phone: ''},
       isNameValid: false,
       isPhoneValid: false,
       isFormValid: false
@@ -23,31 +21,37 @@ export default class BackCallModal extends React.Component {
 
   // get inputs value
   _onChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({[name]: value},
-      () => { this.validateField(name, value)});
+    this.setState(
+      {[e.target.name]: e.target.value},
+      async () => {
+        const {name, phone} = this.state;
+        if (name.length >= 2 && phone.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
+          await this.setState({isFormValid: true});
+          console.log(this.state.isFormValid);
+        }
+      }
+    );
   };
 
-  validateField(fieldName, value) {
-    const {isNameValid, isPhoneValid, isFormValid} = this.state;
-
-    if (fieldName === 'name' && value.length >= 2) {
-      this.setState({isNameValid: true})
-    } else if (fieldName === 'name') {
-      this.setState({isNameValid: false})
-    }
-
-    if (fieldName === 'phone' && value.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
-      this.setState({isPhoneValid: true});
-    } else if (fieldName === 'phone') {
-      this.setState({isPhoneValid: false});
-    }
-
-    if (isNameValid && isPhoneValid) {
-      this.setState({isFormValid: true})
-    }
-  }
+  // validateField(fieldName, value) {
+  //   const {isNameValid, isPhoneValid, isFormValid} = this.state;
+  //
+  //   if (fieldName === 'name' && value.length >= 2) {
+  //     this.setState({isNameValid: true})
+  //   } else if (fieldName === 'name') {
+  //     this.setState({isNameValid: false})
+  //   }
+  //
+  //   if (fieldName === 'phone' && value.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
+  //     this.setState({isPhoneValid: true});
+  //   } else if (fieldName === 'phone') {
+  //     this.setState({isPhoneValid: false});
+  //   }
+  //
+  //   if (isNameValid && isPhoneValid) {
+  //     this.setState({isFormValid: true})
+  //   }
+  // }
 
   // send data
   handleSubmit(e) {
@@ -110,7 +114,6 @@ export default class BackCallModal extends React.Component {
 
             <div>
               <h2 className={css(styles.formTitle)}>Оставьте ваши контакты и мы перезвоним вам в течении часа</h2>
-              <FormErrors formErrors={this.state.formErrors} />
               <form
                 className={css(styles.form)}
                 onSubmit={this.handleSubmit}
