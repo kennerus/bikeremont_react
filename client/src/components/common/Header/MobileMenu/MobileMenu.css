@@ -1,3 +1,65 @@
+.ToggleButton {
+position: relative;
+z-index: 1;
+display: none;
+width: 35px;
+height: 30px;
+padding: 0;
+background-color: transparent;
+border: none;
+cursor: pointer;
+}
+
+.ToggleButton__line {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 35px;
+  height: 4px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.ToggleButton__line:nth-child(1) {
+  top: 0;
+  transition: transform 0.2s;
+}
+
+.ToggleButton__line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  opacity: 1;
+  transition: transform, opacity  0.2s;
+}
+
+.ToggleButton__line:nth-child(3) {
+  top: 100%;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+}
+
+.ToggleButton__line_active:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.ToggleButton__line_active:nth-child(2) {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform, opacity 0.2s;
+}
+
+.ToggleButton__line_active:nth-child(3) {
+  transform: translateY(-17px) rotate(-45deg);
+  transition: transform 0.2s;
+}
+
+@media (max-width: 1200px) {
+  .ToggleButton {
+    display: initial;
+  }
+}
+
 .MobileMenu__overlay {
   position: fixed;
   top: 0;
