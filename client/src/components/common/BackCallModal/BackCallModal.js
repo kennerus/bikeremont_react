@@ -10,6 +10,10 @@ export default class BackCallModal extends React.Component {
       isModalActive: false,
       name: '',
       phone: '',
+      formErrors: {
+        name: '',
+        phone: ''
+      },
       isNameValid: false,
       isPhoneValid: false,
       isFormValid: false
@@ -26,24 +30,32 @@ export default class BackCallModal extends React.Component {
 
   validateName = async () => {
     const {name} = this.state;
+    console.log(name);
 
     if (name.length >= 2) {
       await this.setState({isNameValid: true});
+      this.setState({formErrors: {name: 'valid'}});
+      // console.log(this.state.formErrors.name);
     } else {
       await this.setState({isNameValid: false});
+      this.setState({formErrors: {name: 'invalid'}});
+      // console.log(this.state.formErrors.name);
     }
-    console.log(name, this.state.isNameValid);
   };
 
   validatePhone = async () => {
     const {phone} = this.state;
+    console.log(phone);
 
     if (phone.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
       await this.setState({isPhoneValid: true});
+      this.setState({formErrors: {phone: 'valid'}});
+      // console.log(this.state.formErrors.phone);
     } else {
       await this.setState({isPhoneValid: false});
+      this.setState({formErrors: {phone: 'invalid'}});
+      // console.log(this.state.formErrors.phone);
     }
-    console.log(phone, this.state.isPhoneValid);
   };
 
   validateForm = async () => {
@@ -56,8 +68,14 @@ export default class BackCallModal extends React.Component {
     }
   };
 
-  errorClass = error => {
-    return (error.length === 0 ? '' : 'input_error');
+  errorClassName = errorName => {
+    console.log('name', errorName);
+    return (errorName === ('') ? '' : errorName === ('valid') ? 'input_done' : 'input_error');
+  };
+
+  errorClassPhone = errorPhone => {
+    console.log('phone', errorPhone);
+    return (errorPhone === ('') ? '' : errorPhone === ('valid') ? 'input_done' : 'input_error');
   };
 
   // send data
@@ -88,7 +106,6 @@ export default class BackCallModal extends React.Component {
   render() {
     const {isModalActive} = this.state;
     const {buttonText, buttonStyle} = this.props;
-
     return (
       <div>
         <button
@@ -130,7 +147,7 @@ export default class BackCallModal extends React.Component {
                 onSubmit={this.handleSubmit}
               >
                 <input
-                  className={`${css(styles.input)} ${this.errorClass(this.state.isNameValid)} `}
+                  className={`${css(styles.input)} ${this.errorClassName(this.state.formErrors.name)}`}
                   type="text"
                   name="name"
                   value={this.state.name}
@@ -139,7 +156,7 @@ export default class BackCallModal extends React.Component {
                   onBlur={this.validateName}
                 />
                 <MaskedInput
-                  className={`${css(styles.input)} ${this.errorClass(this.state.isPhoneValid)} `}
+                  className={`${css(styles.input)} ${this.errorClassPhone(this.state.formErrors.phone)}`}
                   mask="+38(011)111-11-11"
                   name="phone"
                   value={this.state.phone}
@@ -222,9 +239,9 @@ const styles = StyleSheet.create({
     marginTop: '20px',
     padding: '10px',
     fontSize: '16px',
-    lineHeight: '1.15',
+    lineHeight: '1.2',
     borderRadius: '5px',
-    border: '2px solid #e0e0e0',
+    border: '1px solid #e0e0e0',
     ':first-child': {
       marginTop: '0',
     },

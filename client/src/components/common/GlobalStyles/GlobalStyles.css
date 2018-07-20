@@ -120,5 +120,11 @@ h3 {
 }
 
 .input_error {
-  box-shadow: 0 0 5px rgba(255, 34, 9, 0.6);
+  border-color: rgba(255, 34, 9, 0.3) !important;
+  box-shadow: 0 0 5px rgba(255, 34, 9, 0.6) !important;
+}
+
+.input_done {
+  border-color: rgba(0, 178, 86, 0.3) !important;
+  box-shadow: 0 0 5px rgba(0, 178, 86, 0.6) !important;
 }
