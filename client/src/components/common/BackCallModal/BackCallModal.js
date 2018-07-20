@@ -21,42 +21,51 @@ export default class BackCallModal extends React.Component {
 
   // get inputs value
   _onChange = (e) => {
-    this.setState(
-      {[e.target.name]: e.target.value},
-      async () => {
-        const {name, phone} = this.state;
-        if (name.length >= 2 && phone.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
-          await this.setState({isFormValid: true});
-          console.log(this.state.isFormValid);
-        }
-      }
-    );
+    this.setState({[e.target.name]: e.target.value});
   };
 
-  // validateField(fieldName, value) {
-  //   const {isNameValid, isPhoneValid, isFormValid} = this.state;
-  //
-  //   if (fieldName === 'name' && value.length >= 2) {
-  //     this.setState({isNameValid: true})
-  //   } else if (fieldName === 'name') {
-  //     this.setState({isNameValid: false})
-  //   }
-  //
-  //   if (fieldName === 'phone' && value.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
-  //     this.setState({isPhoneValid: true});
-  //   } else if (fieldName === 'phone') {
-  //     this.setState({isPhoneValid: false});
-  //   }
-  //
-  //   if (isNameValid && isPhoneValid) {
-  //     this.setState({isFormValid: true})
-  //   }
-  // }
+  validateName = async () => {
+    const {name} = this.state;
+
+    if (name.length >= 2) {
+      await this.setState({isNameValid: true});
+    } else {
+      await this.setState({isNameValid: false});
+    }
+    console.log(name, this.state.isNameValid);
+  };
+
+  validatePhone = async () => {
+    const {phone} = this.state;
+
+    if (phone.match(/^(?!\+.*\(.*\).*\-\-.*$)(?!\+.*\(.*\).*\-$)(\+38\(0[0-9]{2}\)[0-9]{3}[-]{1}[0-9]{2}[-]{1}[0-9]{2})$/)) {
+      await this.setState({isPhoneValid: true});
+    } else {
+      await this.setState({isPhoneValid: false});
+    }
+    console.log(phone, this.state.isPhoneValid);
+  };
+
+  validateForm = async () => {
+    const {isNameValid, isPhoneValid} = this.state;
+
+    if (isNameValid && isPhoneValid) {
+      await this.setState({isFormValid: true});
+    } else {
+      await this.setState({isFormValid: false});
+    }
+  };
+
+  errorClass = error => {
+    return (error.length === 0 ? '' : 'input_error');
+  };
 
   // send data
   handleSubmit(e) {
     e.preventDefault();
-    const {name, phone, isFormValid} = this.state;
+    const {name, phone, isNameValid, isPhoneValid, isFormValid} = this.state;
+
+    this.validateForm();
 
     if (isFormValid) {
       let formData = new FormData();
@@ -70,7 +79,9 @@ export default class BackCallModal extends React.Component {
         .then(() => alert('Ваше письмо отправлено. В ближайшее время с вами свяжется наш менеджер.'))
         .catch(response => console.log(response))
     } else {
-      console.log(321);
+      // if (isNameValid || isPhoneValid) {
+      //   this.errorClass(this.state.isNameValid);
+      // }
     }
   }
 
@@ -119,25 +130,26 @@ export default class BackCallModal extends React.Component {
                 onSubmit={this.handleSubmit}
               >
                 <input
-                  className={css(styles.input)}
+                  className={`${css(styles.input)} ${this.errorClass(this.state.isNameValid)} `}
                   type="text"
                   name="name"
                   value={this.state.name}
                   placeholder="Ваше имя*"
                   onChange={this._onChange}
+                  onBlur={this.validateName}
                 />
                 <MaskedInput
-                  className={css(styles.input)}
+                  className={`${css(styles.input)} ${this.errorClass(this.state.isPhoneValid)} `}
                   mask="+38(011)111-11-11"
                   name="phone"
                   value={this.state.phone}
                   onChange={this._onChange}
+                  onBlur={this.validatePhone}
                 />
 
                 <button
                   className={css(styles.input, styles.btn)}
                   type="submit"
-                  // disabled={!this.state.formValid}
                 >Отправить
                 </button>
               </form>

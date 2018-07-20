@@ -1,12 +1,11 @@
 import React from 'react';
 import MenuLink from '../MenuLink';
-import './MobileMenu.css';
 
 const MobileMenuBody = props => {
-  let mobileMenuBodyClasses = ['MobileMenu__body'];
+  let mobileMenuBodyClasses = 'MobileMenu__body';
 
   if(props.show) {
-    mobileMenuBodyClasses = ['MobileMenu__body MobileMenu_active'];
+    mobileMenuBodyClasses = 'MobileMenu__body MobileMenu_active';
   }
 
   return (

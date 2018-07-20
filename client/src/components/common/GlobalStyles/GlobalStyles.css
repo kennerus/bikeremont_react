@@ -118,3 +118,7 @@ h3 {
 .backCall-btn:hover {
   background-color: #757575;
 }
+
+.input_error {
+  box-shadow: 0 0 5px rgba(255, 34, 9, 0.6);
+}

@@ -39,7 +39,10 @@ export default class MainMenu extends React.Component {
         </div>
 
         <DesktopMenu />
-        <MenuToggleButton click={this.mobMenuToggleClickHandler} />
+        <MenuToggleButton
+          click={this.mobMenuToggleClickHandler}
+          toggled={isMobMenuOpen}
+        />
         <MobileMenuBody
           show={isMobMenuOpen}
           mobMenuCloseClickHandler={this.mobMenuCloseClickHandler}
