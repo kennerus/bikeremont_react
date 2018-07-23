@@ -138,29 +138,37 @@ export default class BackCallModal extends React.Component {
                 className={css(styles.form)}
                 onSubmit={this.handleSubmit}
               >
-                <input
-                  className={`${css(styles.input)} ${this.errorClass(this.state.formErrorsName)}`}
-                  type="text"
-                  name="name"
-                  value={this.state.name}
-                  placeholder="Ваше имя*"
-                  onChange={this._onChange}
-                  onBlur={this.validateName}
-                />
-                <MaskedInput
-                  className={`${css(styles.input)} ${this.errorClass(this.state.formErrorsPhone)}`}
-                  mask="+38(011)111-11-11"
-                  name="phone"
-                  value={this.state.phone}
-                  onChange={this._onChange}
-                  onBlur={this.validatePhone}
-                />
+                <div className={css(styles.formRow)}>
+                  <input
+                    className={`${css(styles.input)} ${this.errorClass(this.state.formErrorsName)}`}
+                    id="userName"
+                    type="text"
+                    name="name"
+                    value={this.state.name}
+                    placeholder="Ваше имя*"
+                    onChange={this._onChange}
+                    onBlur={this.validateName}
+                  />
+                  <label htmlFor="userName" className={css(styles.label)}>Введите ваше имя</label>
+                </div>
 
-                <button
-                  className={css(styles.input, styles.btn)}
-                  type="submit"
-                >Отправить
-                </button>
+                <div className={css(styles.formRow)}>
+                  <MaskedInput
+                    className={`${css(styles.input)} ${this.errorClass(this.state.formErrorsPhone)}`}
+                    id="userPhone"
+                    mask="+38(011)111-11-11"
+                    name="phone"
+                    value={this.state.phone}
+                    onChange={this._onChange}
+                    onBlur={this.validatePhone}
+                  />
+                  <label htmlFor="userName" className={css(styles.label)}>Введите ваше имя</label>
+                </div>
+
+
+                <div className={css(styles.formRow)}>
+                  <button className={css(styles.input, styles.btn)} type="submit">Отправить</button>
+                </div>
               </form>
             </div>
           </div>
@@ -228,15 +236,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    marginTop: '20px',
+    position: 'relative',
+    zIndex: '1',
+    width: '100%',
+    boxSizing: 'border-box',
     padding: '10px',
     fontSize: '16px',
     lineHeight: '1.2',
     borderRadius: '5px',
     border: '1px solid #e0e0e0',
-    ':first-child': {
-      marginTop: '0',
-    },
   },
   btn: {
     color: '#232323',
@@ -247,5 +255,25 @@ const styles = StyleSheet.create({
       backgroundColor: '#9e9e9e',
       borderColor: '#9e9e9e',
     }
+  },
+  formRow: {
+    position: 'relative',
+    zIndex: '1',
+    marginTop: '30px',
+    ':first-child': {
+      marginTop: '0',
+    },
+  },
+  label: {
+    position: 'absolute',
+    zIndex: '1',
+    right: '10px',
+    bottom: '-16px',
+    padding: '0 5px',
+    fontSize: '12px',
+    color: 'white',
+    backgroundColor: 'rgba(255, 34, 9, 0.8)',
+    borderBottomLeftRadius: '5px',
+    borderBottomRightRadius: '5px',
   }
 });
