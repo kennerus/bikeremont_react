@@ -67,7 +67,7 @@ export default class BackCallModal extends React.Component {
   // send data
   handleSubmit(e) {
     e.preventDefault();
-    const {name, phone, isNameValid, isPhoneValid, isFormValid} = this.state;
+    const {name, phone, isFormValid} = this.state;
 
     this.validateForm();
 
@@ -86,7 +86,9 @@ export default class BackCallModal extends React.Component {
       let inputs = document.querySelectorAll('.js_input');
 
       for (let i = 0; i < inputs.length; i++) {
-        inputs[i].classList.add('input_error');
+        if (!inputs[i].classList.contains('input_done')) {
+          inputs[i].classList.add('input_error');
+        }
       }
     }
   }
